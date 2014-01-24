@@ -10,6 +10,6 @@
 
 @interface EditableCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UITextField *taskText;
+@property (nonatomic, weak) IBOutlet UITextView *taskText;
 
 @end
