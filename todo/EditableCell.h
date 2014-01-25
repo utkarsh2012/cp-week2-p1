@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SwipeableTextView.h"
 
 @interface EditableCell : UITableViewCell
 
-@property (nonatomic, weak) IBOutlet UITextView *taskText;
+@property (nonatomic, weak) IBOutlet SwipeableTextView *taskText;
 
 @end

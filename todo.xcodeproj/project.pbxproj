@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1B22AAA9E25E411181FA0F9F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C0F30E790AF0485B8DCC6650 /* libPods.a */; };
+		BF6EA3DF1893A3F6003E7AE0 /* SwipeableTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = BF6EA3DE1893A3F6003E7AE0 /* SwipeableTextView.m */; };
 		BFBEDF8C18924B8B002383A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBEDF8B18924B8B002383A6 /* Foundation.framework */; };
 		BFBEDF8E18924B8B002383A6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBEDF8D18924B8B002383A6 /* CoreGraphics.framework */; };
 		BFBEDF9018924B8B002383A6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBEDF8F18924B8B002383A6 /* UIKit.framework */; };
@@ -39,6 +40,8 @@
 
 /* Begin PBXFileReference section */
 		7F971D87B5C840EBB5AFAB60 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		BF6EA3DD1893A3F6003E7AE0 /* SwipeableTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeableTextView.h; sourceTree = "<group>"; };
+		BF6EA3DE1893A3F6003E7AE0 /* SwipeableTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeableTextView.m; sourceTree = "<group>"; };
 		BFBEDF8818924B8B002383A6 /* todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFBEDF8B18924B8B002383A6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFBEDF8D18924B8B002383A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -138,6 +141,8 @@
 				BFCC807218924F8F0009B013 /* EditableCell.xib */,
 				BFCC806F18924F700009B013 /* EditableCell.h */,
 				BFCC807018924F700009B013 /* EditableCell.m */,
+				BF6EA3DD1893A3F6003E7AE0 /* SwipeableTextView.h */,
+				BF6EA3DE1893A3F6003E7AE0 /* SwipeableTextView.m */,
 			);
 			path = todo;
 			sourceTree = "<group>";
@@ -309,6 +314,7 @@
 				BFBEDFA218924B8B002383A6 /* IOSViewController.m in Sources */,
 				BFBEDF9818924B8B002383A6 /* main.m in Sources */,
 				BFCC806E18924CF70009B013 /* TableViewController.m in Sources */,
+				BF6EA3DF1893A3F6003E7AE0 /* SwipeableTextView.m in Sources */,
 				BFCC807118924F700009B013 /* EditableCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
