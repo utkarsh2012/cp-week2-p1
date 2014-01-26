@@ -8,9 +8,6 @@
 
 #import "TableViewController.h"
 #import "EditableCell.h"
-#define FONT_SIZE 14.0f
-#define CELL_CONTENT_WIDTH 320.0f
-#define CELL_CONTENT_MARGIN 10.0f
 
 @interface TableViewController ()
 
@@ -54,12 +51,6 @@ NSMutableArray *items;
     
     UINib *customNib = [UINib nibWithNibName:@"EditableCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"EditableCell"];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 #pragma mark - Remove keyboard when tapped elsewhere
@@ -70,17 +61,6 @@ NSMutableArray *items;
         [self.view endEditing:YES];
     }
 }
-
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSString *text = [items objectAtIndex:indexPath.row];
-    NSDictionary *attributes = @{NSFontAttributeName: [UIFont fontWithName:@"HelveticaNeue" size:14]};
-    CGSize expectedTextSize = [text sizeWithAttributes:attributes];
-    return expectedTextSize.height;
-}
-
 
 
 #pragma mark - Table view data source
@@ -120,6 +100,7 @@ NSMutableArray *items;
     return cell;
 }
 
+
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -146,16 +127,5 @@ NSMutableArray *items;
 }
 
 
-//Delete Item To Array
-- (void)delItemToArray {
-    [items removeLastObject];
-    [self.tableView reloadData];
-}
-
-//Update Item in Array
-- (void)updateItemInArray {
-    //[items removeLastObject];
-    [self.tableView reloadData];
-}
 
 @end

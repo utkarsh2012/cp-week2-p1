@@ -13,27 +13,26 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" bouncesZoom="NO" text="Hello World!" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-3j-guZ">
+                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" keyboardDismissMode="onDrag" text="Hello World!" translatesAutoresizingMaskIntoConstraints="NO" id="TwN-3j-guZ">
                         <rect key="frame" x="9" y="5" width="291" height="33"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <accessibility key="accessibilityConfiguration">
                             <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
-                            <bool key="isElement" value="NO"/>
+                            <bool key="isElement" value="YES"/>
                         </accessibility>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                     </textView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="TwN-3j-guZ" firstAttribute="leading" secondItem="8jQ-Qj-18u" secondAttribute="leading" constant="9" id="EqD-5h-WcQ"/>
-                    <constraint firstAttribute="trailing" secondItem="TwN-3j-guZ" secondAttribute="trailing" constant="20" id="MSl-0d-ZZP"/>
-                    <constraint firstAttribute="bottom" secondItem="TwN-3j-guZ" secondAttribute="bottom" constant="5" id="qAg-Qw-mQy"/>
-                    <constraint firstItem="TwN-3j-guZ" firstAttribute="top" secondItem="8jQ-Qj-18u" secondAttribute="top" constant="5" id="t3i-73-nb5"/>
+                    <constraint firstItem="TwN-3j-guZ" firstAttribute="centerY" secondItem="8jQ-Qj-18u" secondAttribute="centerY" id="DFF-ha-oIm"/>
+                    <constraint firstAttribute="trailing" secondItem="TwN-3j-guZ" secondAttribute="trailing" constant="20" symbolic="YES" id="Ubd-mU-rjH"/>
+                    <constraint firstItem="TwN-3j-guZ" firstAttribute="leading" secondItem="8jQ-Qj-18u" secondAttribute="leading" constant="9" id="shI-w8-ztw"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="taskText" destination="TwN-3j-guZ" id="jZM-wb-T2w"/>
+                <outlet property="taskText" destination="TwN-3j-guZ" id="U3H-8J-RXU"/>
             </connections>
         </tableViewCell>
     </objects>

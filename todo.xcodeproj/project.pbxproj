@@ -15,7 +15,6 @@
 		BFBEDF9818924B8B002383A6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBEDF9718924B8B002383A6 /* main.m */; };
 		BFBEDF9C18924B8B002383A6 /* IOSAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBEDF9B18924B8B002383A6 /* IOSAppDelegate.m */; };
 		BFBEDF9F18924B8B002383A6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFBEDF9D18924B8B002383A6 /* Main.storyboard */; };
-		BFBEDFA218924B8B002383A6 /* IOSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFBEDFA118924B8B002383A6 /* IOSViewController.m */; };
 		BFBEDFA418924B8B002383A6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFBEDFA318924B8B002383A6 /* Images.xcassets */; };
 		BFBEDFAB18924B8B002383A6 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBEDFAA18924B8B002383A6 /* XCTest.framework */; };
 		BFBEDFAC18924B8B002383A6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBEDF8B18924B8B002383A6 /* Foundation.framework */; };
@@ -50,8 +49,6 @@
 		BFBEDF9A18924B8B002383A6 /* IOSAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSAppDelegate.h; sourceTree = "<group>"; };
 		BFBEDF9B18924B8B002383A6 /* IOSAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSAppDelegate.m; sourceTree = "<group>"; };
 		BFBEDF9E18924B8B002383A6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		BFBEDFA018924B8B002383A6 /* IOSViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IOSViewController.h; sourceTree = "<group>"; };
-		BFBEDFA118924B8B002383A6 /* IOSViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IOSViewController.m; sourceTree = "<group>"; };
 		BFBEDFA318924B8B002383A6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		BFBEDFA918924B8B002383A6 /* todoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = todoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFBEDFAA18924B8B002383A6 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -129,8 +126,6 @@
 				BFBEDF9A18924B8B002383A6 /* IOSAppDelegate.h */,
 				BFBEDF9B18924B8B002383A6 /* IOSAppDelegate.m */,
 				BFBEDF9D18924B8B002383A6 /* Main.storyboard */,
-				BFBEDFA018924B8B002383A6 /* IOSViewController.h */,
-				BFBEDFA118924B8B002383A6 /* IOSViewController.m */,
 				BFBEDFA318924B8B002383A6 /* Images.xcassets */,
 				BFBEDF9218924B8B002383A6 /* Supporting Files */,
 				BFCC806C18924CF70009B013 /* TableViewController.h */,
@@ -306,7 +301,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFBEDF9C18924B8B002383A6 /* IOSAppDelegate.m in Sources */,
-				BFBEDFA218924B8B002383A6 /* IOSViewController.m in Sources */,
 				BFBEDF9818924B8B002383A6 /* main.m in Sources */,
 				BFCC806E18924CF70009B013 /* TableViewController.m in Sources */,
 				BFCC807118924F700009B013 /* EditableCell.m in Sources */,
