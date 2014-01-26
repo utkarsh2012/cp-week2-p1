@@ -10,4 +10,5 @@
 
 @implementation EditableCell
 
+
 @end
