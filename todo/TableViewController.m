@@ -46,15 +46,15 @@ NSMutableArray *items;
     [addButton setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                         [UIFont fontWithName:@"Helvetica" size:25.0],NSFontAttributeName,
                                         nil]forState:UIControlStateNormal];
-
+    
     self.navigationItem.rightBarButtonItem = addButton;
     
     UINib *customNib = [UINib nibWithNibName:@"EditableCell" bundle:nil];
     [self.tableView registerNib:customNib forCellReuseIdentifier:@"EditableCell"];
-
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
- 
+    
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
@@ -80,15 +80,11 @@ NSMutableArray *items;
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleNone;
-}
-- (BOOL)tableView:(UITableView *)tableView shouldIndentWhileEditingRowAtIndexPath:(NSIndexPath *)indexPath {
-    return NO;
-}
+
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
     
 }
@@ -115,12 +111,12 @@ NSMutableArray *items;
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self delItemToArray];
-        //[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
+        [items removeObjectAtIndex:indexPath.row];
+        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
+    }
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
@@ -135,11 +131,17 @@ NSMutableArray *items;
     [items addObject:[NSString stringWithFormat:@"Wat?"]];
     [self.tableView reloadData];
 }
-     
+
 
 //Delete Item To Array
 - (void)delItemToArray {
     [items removeLastObject];
+    [self.tableView reloadData];
+}
+
+//Update Item in Array
+- (void)updateItemInArray {
+    //[items removeLastObject];
     [self.tableView reloadData];
 }
 
