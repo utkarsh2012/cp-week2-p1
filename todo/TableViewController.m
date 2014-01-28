@@ -10,12 +10,10 @@
 #import "EditableCell.h"
 
 @interface TableViewController ()
-
+@property (nonatomic, strong) NSMutableArray* items;
 @end
 
 @implementation TableViewController
-
-NSMutableArray *items;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -30,6 +28,9 @@ NSMutableArray *items;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadTodoItems];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChanged:) name:@"textFieldChanged" object:nil ];
     
     //Remove keyboard from UITableViewCell on tap
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
@@ -37,7 +38,7 @@ NSMutableArray *items;
     [self.tableView addGestureRecognizer:tap];
     
     
-    items = [[NSMutableArray alloc] initWithObjects:@"Learn iOS", @"Unlearn a lot of crap", nil];
+    //items = [[NSMutableArray alloc] initWithObjects:@"Learn iOS", nil];
     UIBarButtonItem *addButton = [[UIBarButtonItem alloc]
                                   initWithTitle:@"+"
                                   style:UIBarButtonItemStyleBordered
@@ -80,14 +81,15 @@ NSMutableArray *items;
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
-    
+    [self.items exchangeObjectAtIndex:[sourceIndexPath row] withObjectAtIndex:[destinationIndexPath row]];
+    [self saveToDoItems];
 }
 
 
 #pragma mark - Others
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [items count];
+    return [self.items count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -95,17 +97,34 @@ NSMutableArray *items;
     static NSString *CellIdentifier = @"EditableCell";
     EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.taskText.text = [items objectAtIndex:indexPath.row];
+    cell.taskText.text = [self.items objectAtIndex:indexPath.row];
+
+     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSString *theText = [self.items objectAtIndex: indexPath.row];
     
-    return cell;
+    // adjust the textView width base on screen size and orientation
+	// the only constant width in the cells is the checkbox (64)
+	CGRect screenRect = [[UIScreen mainScreen] bounds];
+	CGFloat width = screenRect.size.width;
+	width -= 50;
+    
+	CGRect textRect = [theText boundingRectWithSize:CGSizeMake(width, MAXFLOAT)
+												  options:NSStringDrawingUsesLineFragmentOrigin
+											   attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]}
+												  context:nil];
+    
+    return textRect.size.height + 15;
 }
 
 
-// Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [items removeObjectAtIndex:indexPath.row];
+        [self.items removeObjectAtIndex:indexPath.row];
+        [self saveToDoItems];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
     }
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
@@ -113,19 +132,58 @@ NSMutableArray *items;
     }
 }
 
+
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     self.tableView.allowsMultipleSelectionDuringEditing = editing;
     [super setEditing:editing animated:animated];
 }
 
-
-//Add Item To Array
 - (void)addItemToArray {
-    [items addObject:[NSString stringWithFormat:@"Wat?"]];
+    [self.items addObject:[NSString stringWithFormat:@"Wat?"]];
+    [self saveToDoItems];
+    [self.tableView reloadData];
+}
+
+- (void)updateItemInArray:(NSInteger)indexPath value:(NSString*)value {
+    [self.items replaceObjectAtIndex:indexPath withObject:value];
+    [self saveToDoItems];
     [self.tableView reloadData];
 }
 
 
+- (void) textFieldChanged: (NSNotification *) notification
+{
+    EditableCell *cell = (EditableCell*)notification.object;
+    
+    int row = [[self.tableView indexPathForCell:cell] row];
+    self.items[row] = cell.taskText.text;
+    [self saveToDoItems];
+}
+
+- (void)saveToDoItems
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [defaults setObject:self.items forKey:@"TodoItems"];
+    [defaults synchronize];
+}
+
+- (void)loadTodoItems
+{
+    if (!self.items || !self.items.count) {
+        self.items = [[NSMutableArray alloc] init];
+    }
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSMutableArray *arr = [defaults objectForKey:@"TodoItems"];
+    
+    for(NSString *str in arr)
+    {
+        [self.items addObject:str];
+    }
+    
+}
 
 @end

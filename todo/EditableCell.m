@@ -9,5 +9,9 @@
 #import "EditableCell.h"
 
 @implementation EditableCell
-
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"textFieldChanged" object:self];
+    return NO;
+}
 @end
