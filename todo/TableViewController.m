@@ -160,7 +160,7 @@
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    [defaults setObject:self.items forKey:@"TodoItems"];
+    [defaults setObject:self.items forKey:@"todo"];
     [defaults synchronize];
 }
 
@@ -172,7 +172,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    NSMutableArray *arr = [defaults objectForKey:@"TodoItems"];
+    NSMutableArray *arr = [defaults objectForKey:@"todo"];
     
     for(NSString *str in arr)
     {
