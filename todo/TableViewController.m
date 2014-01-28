@@ -30,8 +30,6 @@
     [super viewDidLoad];
     [self loadTodoItems];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textFieldChanged:) name:@"textFieldChanged" object:nil ];
-    
     //Remove keyboard from UITableViewCell on tap
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     tap.cancelsTouchesInView = NO;
@@ -98,8 +96,11 @@
     EditableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
     cell.taskText.text = [self.items objectAtIndex:indexPath.row];
-
-     return cell;
+    cell.taskText.delegate = self;
+    
+    cell.taskText.tag = indexPath.row;
+    
+    return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -132,6 +133,10 @@
     }
 }
 
+- (void) textViewDidEndEditing:(UITextView *)textView{
+    NSInteger indexRow = textView.tag;
+    [self updateItemInArray:indexRow value:textView.text];
+}
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
@@ -149,16 +154,6 @@
     [self.items replaceObjectAtIndex:indexPath withObject:value];
     [self saveToDoItems];
     [self.tableView reloadData];
-}
-
-
-- (void) textFieldChanged: (NSNotification *) notification
-{
-    EditableCell *cell = (EditableCell*)notification.object;
-    
-    int row = [[self.tableView indexPathForCell:cell] row];
-    self.items[row] = cell.taskText.text;
-    [self saveToDoItems];
 }
 
 - (void)saveToDoItems
